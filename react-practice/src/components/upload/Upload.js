@@ -65,20 +65,19 @@ import React from 'react';
 import Dropzone from 'react-dropzone';
 import './Upload.scss';
 import {fire, storage} from '../../configFire/Fire';
-import { Redirect } from 'react-router-dom';
-import Uploaded from '../uploaded/uploaded';
+import { withRouter } from 'react-router-dom';
 
 class Upload extends React.Component {
     constructor(props){
         super(props) 
         this.state = {
             files:[],
-            progress: 0, 
-            redirect: false
+            progress: 0
           };
         this.logOut = this.logOut.bind(this);
         this.onDrop = this.onDrop.bind(this);
         this.handleUpload = this.handleUpload.bind(this);
+        this.changeRedirect = this.changeRedirect.bind(this);
     }
 
     /**
@@ -101,8 +100,12 @@ class Upload extends React.Component {
         console.log(files)
     }
 
+    /**
+     * Function to redirect to uploaded page on button click
+     */
     changeRedirect(){
-        this.props.changeRedirect(this.state.redirect);
+        let path = `/uploaded`;
+        this.props.history.push(path);
     }
 
     /**
@@ -125,7 +128,7 @@ class Upload extends React.Component {
           console.log(url);
 
         this.setState({redirect: true});
-         this.changeRedirect();
+        this.changeRedirect();
         })
       });
     }
@@ -180,11 +183,11 @@ class Upload extends React.Component {
                         }
                     </Dropzone>
                     <button className="btn btn-info uploadBtn shadow rounded" onClick={this.handleUpload}>Upload</button>
-                <button className="btn btn-danger logOutBtn shadow rounded" onClick={this.logOut}>Sign Out</button>
+                    <button className="btn btn-danger logOutBtn shadow rounded" onClick={this.logOut}>Sign Out</button>
                 </div>
             </React.Fragment>
         );
     }
 }
 
-export default Upload
+export default withRouter(Upload);

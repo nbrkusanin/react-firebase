@@ -6,7 +6,7 @@ import Footer from './components/footer/Footer';
 import Login from './components/Login/Login';
 import Upload from './components/upload/Upload';
 import {fire, storage} from './configFire/Fire';
-import { BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Uploaded from './components/uploaded/uploaded';
 
 class App extends React.Component {
@@ -38,10 +38,6 @@ class App extends React.Component {
     });
   }
 
-  handleRedirect(){
-    this.setState({redirect: true})
-  }
-
   render(){
     return (
       <Router>
@@ -49,13 +45,9 @@ class App extends React.Component {
           <React.Fragment>
             <Header />
             <Route exact path="/" render={() =>(
-              this.state.user ? ( <Route component={() => <Upload changeRedirect={this.handleRedirect.bind(this)} />} />)
-              : (<Route component={Login} />)
+              this.state.user ? ( <Route component={Upload} />) : (<Route component={Login} />)
             )} />
-            
-            <Route path="/uploaded" render={() => (
-              this.state.redirect && <Route component={Uploaded}/>
-            )}/>
+            <Route path="/uploaded" component={Uploaded}/>
             <Footer />
           </React.Fragment>
         </Switch>
