@@ -1,0 +1,13 @@
+.middleSection {
+  width: 100%;
+  height: calc(100% - 150px);
+}
+
+.middleSection .container {
+  height: 100%;
+}
+
+.middleSection .container .formWrapp {
+  height: 100%;
+}
+/*# sourceMappingURL=Login.css.map */

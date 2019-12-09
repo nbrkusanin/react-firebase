@@ -1,0 +1,77 @@
+.uploadBtn {
+    position:relative;
+    left: 35px;
+    margin-top: 10px;
+}
+
+.logOutBtn {
+    position: relative !important;
+    right: -380px;
+    bottom: -5px;
+}
+// .dropZoneContainer {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
+.dropZoneOuter {
+    width: 70%;
+    height: 50vh;
+    border: 2px solid rgba(71, 71, 71, .2);
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+progress {
+    margin-top: 5px;
+    margin-right: 16px;
+}
+
+.dropZone {
+    width: 95%;
+    height: 30vh;
+    background-color: #f6f6f6;
+    border: 3px dashed rgba(71, 71, 71, .2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    color: rgba(71, 71, 71, .2);
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+}
+
+.thumbContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    padding-left: 15px;
+}
+
+.thumb {
+    display: inline-flex;
+    border-radius: 2px;
+    border: 1px solid #eaeaea;
+    margin-bottom: 0;
+    
+    margin-right: 16px;
+    width: 80px;
+    height: 80px;
+    padding: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+.thumbInner {
+    display: flex;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.imgThumb {
+    display: block;
+    width: auto;
+    height: 100%; 
+}
