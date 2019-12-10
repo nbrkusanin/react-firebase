@@ -1,5 +1,6 @@
 import React from 'react';
 import firebase from 'firebase';
+import "./uploaded.scss";
 
 class Uploaded extends React.Component{
 
@@ -25,7 +26,7 @@ class Uploaded extends React.Component{
         imageRef.getDownloadURL().then((url) => {
             
             this.setState(() => {
-                this.state.img.push(url)
+                this.setState({ img: [...this.state.img, url] })
             });
             console.log(this.state)
         }).catch((error) => {
@@ -36,10 +37,12 @@ class Uploaded extends React.Component{
     render(){
 
         console.log(this.state)
-
+        const oneImg = this.state.img.map((image) => {
+            return <img src={image} className="imgCard"/>
+        })
         return(
-            <div>
-                <img src={this.state.img[0]}/>
+            <div className="uploadedContainer">
+                {oneImg}
             </div>
         )
     }

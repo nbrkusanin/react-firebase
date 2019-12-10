@@ -1,0 +1,15 @@
+.uploadedContainer {
+    width: 70%;
+    margin: 40px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.imgCard {
+    width: 30%;
+    height: auto;
+    margin-top: 10px;
+    border: 1px solid black;
+}
