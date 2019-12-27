@@ -41,10 +41,10 @@ class UploadedVideo extends React.Component{
 
     render(){
 
-        //console.log(this.state)
+        //console.log(this.state.video)
         const oneVideo = this.state.video.map((video) => {
-            return <video width="320" height="240" controls>
-                    <source src={video} type="video/mp4" />
+            return  <video key={video} width="320" height="240" controls>
+                        <source src={video} type="video/mp4" />
                     </video>
         })
         return(

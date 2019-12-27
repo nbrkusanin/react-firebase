@@ -140,23 +140,40 @@ class Upload extends React.Component {
     }
 
 
-    render(){if(this.state.files[0]){
-        
-    }
-        const files = this.state.files.map(file => (
-            <div className="thumbsContainer" key={file.name}>
-                <div className="thumb" key={file.name}>
-                    <div className="thumbInner">
-                        <img
-                            src={file.preview}
-                            alt={file.name}
-                            className="imgThumb"
-                        />
+    render(){
+        let files;
+        if(this.state.files[0]){
+            console.log(this.state.files[0])
+            if(this.state.files[0].path.includes('mp4')){
+                files = this.state.files.map(file => (
+                    <div className="thumbsContainer" key={file.name}>
+                        <div className="thumb" key={file.name}>
+                            <div className="thumbInner">
+                                <video controls>
+                                    <source src={file.preview} type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                  ));
+        }else {
+            files = this.state.files.map(file => (
+                <div className="thumbsContainer" key={file.name}>
+                    <div className="thumb" key={file.name}>
+                        <div className="thumbInner">
+                            <img
+                                src={file.preview}
+                                alt={file.name}
+                                className="imgThumb"
+                            />
+                        </div>
                     </div>
                 </div>
-            </div>
-          ));
-          
+              ));
+    
+        
+            }
+        }
 
         return(
             <React.Fragment>
@@ -182,7 +199,7 @@ class Upload extends React.Component {
                                             </div>
                                         )}
                                     </div>
-                                    <div className='test'>
+                                    <div>
                                         {files}
                                     </div>
                                     <progress value={this.state.progress} max='100' />

@@ -3,7 +3,7 @@
     margin: 40px auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 
@@ -16,4 +16,10 @@
 
 .filesWrap {
     min-height: calc(100% - 150px);
+}
+
+video {
+    margin-top: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
 }
