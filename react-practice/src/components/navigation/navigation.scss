@@ -1,0 +1,26 @@
+.navBar {
+    display: block;
+
+}
+
+.navBar::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+.navBtn {
+    float: right;
+}
+
+.navBtnUpload {
+    float: left;
+}
+
+a { 
+    color: white; 
+
+    &:hover {
+        color:white;
+        text-decoration: none;
+    }
+}

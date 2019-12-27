@@ -7,6 +7,22 @@
 
          .formWrapp {
              height: 100%;
+             flex-direction: column;
          }
-     }
+
+        .signInMsg{
+             width: 100%;
+             display: flex;
+             align-items: center;
+             justify-content: center; 
+             text-align: center; 
+             font-size: 20px;
+             font-weight: 600;
+             color:#5cb85c;  
+
+             &.hidden {
+                 display: none;
+             }
+        }
+    }
 }

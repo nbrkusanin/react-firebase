@@ -8,6 +8,7 @@ import Upload from './components/upload/Upload';
 import {fire, storage} from './configFire/Fire';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Uploaded from './components/uploaded/uploaded';
+import UploadedVideo from './components/uploaded/uploadedVideo';
 
 class App extends React.Component {
 
@@ -47,7 +48,10 @@ class App extends React.Component {
             <Route exact path="/" render={() =>(
               this.state.user ? ( <Route component={Upload} />) : (<Route component={Login} />)
             )} />
-            <Route path="/uploaded" component={Uploaded}/>
+            <Route path="/uploadedImg" component={Uploaded}>
+            </Route>
+            <Route path="/uploadedVideo" component={UploadedVideo}>
+            </Route>
             <Footer />
           </React.Fragment>
         </Switch>

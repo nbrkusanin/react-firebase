@@ -3,12 +3,12 @@ import firebase from 'firebase';
 import "./uploaded.scss";
 import Navigation from '../navigation/navigation';
 
-class Uploaded extends React.Component{
+class UploadedVideo extends React.Component{
 
     constructor() {
         super();
         this.state = {
-            img:[]
+            video:[]
         }
     }
 
@@ -24,33 +24,38 @@ class Uploaded extends React.Component{
     }
 
     displayImage(imageRef) {
-        if(!imageRef.location.path.includes('mp4')){
+        if(imageRef.location.path.includes('mp4')){
+
             imageRef.getDownloadURL().then((url) => {
                 
                 this.setState(() => {
-                    this.setState({ img: [...this.state.img, url] })
+                    this.setState({ video: [...this.state.video, url] })
                 });
                 //console.log(this.state)
             }).catch((error) => {
                 //console.log(error)
             })
+        
         }
     }
 
     render(){
+
         //console.log(this.state)
-        const oneImg = this.state.img.map((image) => {
-            return <img src={image} className="imgCard"/>
+        const oneVideo = this.state.video.map((video) => {
+            return <video width="320" height="240" controls>
+                    <source src={video} type="video/mp4" />
+                    </video>
         })
         return(
             <div className="filesWrap">
                 <Navigation/>
                 <div className="uploadedContainer">
-                    {oneImg}
+                    {oneVideo}
                 </div>
             </div>
         )
     }
 }
 
-export default Uploaded
+export default UploadedVideo

@@ -9,11 +9,9 @@
     right: -380px;
     bottom: -5px;
 }
-// .dropZoneContainer {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-// }
+.dropZoneContainer {
+    height: calc(100% - 200px);
+}
 .dropZoneOuter {
     width: 70%;
     height: 50vh;

@@ -97,14 +97,20 @@ class Upload extends React.Component {
             }));
         
         this.setState({files})
-        console.log(files)
     }
 
     /**
      * Function to redirect to uploaded page on button click
      */
     changeRedirect(){
-        let path = `/uploaded`;
+        let path;
+        if(this.state.files[0]){
+            if(this.state.files[0].type.split('/')[1] === 'mp4'){
+                path = `/uploadedVideo`;
+            } else {
+                path = `/uploadedImg`;
+            }
+        }
         this.props.history.push(path);
     }
 
@@ -121,11 +127,11 @@ class Upload extends React.Component {
          this.setState({progress});
       },
       (error) => {
-        console.log(error);
+        //console.log(error);
       },
       () => {
         storage.ref('images').child(files[0].name).getDownloadURL().then(url => {
-          console.log(url);
+          //console.log(url);
 
         this.setState({redirect: true});
         this.changeRedirect();
@@ -134,7 +140,9 @@ class Upload extends React.Component {
     }
 
 
-    render(){
+    render(){if(this.state.files[0]){
+        
+    }
         const files = this.state.files.map(file => (
             <div className="thumbsContainer" key={file.name}>
                 <div className="thumb" key={file.name}>
@@ -157,7 +165,7 @@ class Upload extends React.Component {
                         onDrop={this.onDrop}
                         accept="image/png, image/gif, image/jpeg, video/mp4"
                         minSize={0}
-                        maxSize={5242880}
+                        maxSize={7340032}
                     >
                             {({getRootProps, getInputProps, isDragActive, isDragReject, rejectedFiles}) => {
                                 const isFileTooLarge = rejectedFiles.length > 0 && rejectedFiles[0].size > 5242880;
@@ -174,7 +182,7 @@ class Upload extends React.Component {
                                             </div>
                                         )}
                                     </div>
-                                    <div>
+                                    <div className='test'>
                                         {files}
                                     </div>
                                     <progress value={this.state.progress} max='100' />
